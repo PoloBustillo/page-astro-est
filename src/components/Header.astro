@@ -1,11 +1,13 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
+
 ---
 
-<header>
+
+<header class="m-0 py-0 px-1 bg-white@apply shadow-[0_2px_8px_rgba(var(--black),5%)]">
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2 class="m-0 !text-[1em]"><a href="/">{SITE_TITLE}</a></h2>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
@@ -43,16 +45,7 @@ import { SITE_TITLE } from '../consts';
 	</nav>
 </header>
 <style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
+	
 
 	h2 a,
 	h2 a.active {
