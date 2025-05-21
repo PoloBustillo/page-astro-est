@@ -1,37 +1,35 @@
 ---
-title: 'Markdown Style Guide'
-description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
-pubDate: 'Jun 19 2024'
-heroImage: '/blog-placeholder-1.jpg'
+title: "Guía de Estilo para Redes Neuronales"
+description: "Aquí tienes un ejemplo de sintaxis básica de Markdown que se puede usar al escribir contenido sobre redes neuronales en Astro."
+pubDate: "Jun 19 2024"
+heroImage: "/neural-networks-placeholder.jpg"
 ---
 
-Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
+Aquí tienes un ejemplo de sintaxis básica de Markdown que se puede usar al escribir contenido sobre redes neuronales en Astro.
 
-## Headings
+## Encabezados
 
-The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
+Los siguientes elementos HTML `<h1>`—`<h6>` representan seis niveles de encabezados de sección. `<h1>` es el nivel más alto mientras que `<h6>` es el más bajo.
 
-# H1
+# Redes Neuronales
 
-## H2
+## Introducción
 
-### H3
+### Aplicaciones
 
-#### H4
+#### Arquitecturas
 
-##### H5
+##### Entrenamiento
 
-###### H6
+###### Optimización
 
-## Paragraph
+## Párrafo
 
-Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
+Las redes neuronales son un subconjunto de algoritmos de aprendizaje automático inspirados en la estructura y función del cerebro humano. Consisten en capas de nodos interconectados, o neuronas, que procesan datos y aprenden patrones. Las redes neuronales se utilizan ampliamente en aplicaciones como el reconocimiento de imágenes, el procesamiento del lenguaje natural y los sistemas autónomos.
 
-Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
+## Imágenes
 
-## Images
-
-### Syntax
+### Sintaxis
 
 ```markdown
 ![Alt text](./full/or/relative/path/of/image)
@@ -99,7 +97,7 @@ we can use 3 backticks ``` in new line and write snippet and close with 3 backti
 
 ````markdown
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -115,7 +113,7 @@ we can use 3 backticks ``` in new line and write snippet and close with 3 backti
 ### Output
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />

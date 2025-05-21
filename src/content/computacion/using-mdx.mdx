@@ -1,31 +1,28 @@
 ---
-title: 'Using MDX'
-description: 'Lorem ipsum dolor sit amet'
+title: 'Introducción a la Computación'
+description: 'Conceptos básicos de computación con ejemplos interactivos'
 pubDate: 'Jun 01 2024'
 heroImage: '/blog-placeholder-5.jpg'
 ---
 
-This theme comes with the [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/) integration installed and configured in your `astro.config.mjs` config file. If you prefer not to use MDX, you can disable support by removing the integration from your config file.
+La computación es una disciplina que abarca el estudio de los sistemas computacionales, algoritmos y su implementación. En este artículo, exploraremos conceptos básicos utilizando ejemplos interactivos.
 
-## Why MDX?
+## ¿Qué es un Algoritmo?
 
-MDX is a special flavor of Markdown that supports embedded JavaScript & JSX syntax. This unlocks the ability to [mix JavaScript and UI Components into your Markdown content](https://docs.astro.build/en/guides/markdown-content/#mdx-features) for things like interactive charts or alerts.
+Un algoritmo es una secuencia de pasos definidos para resolver un problema. Por ejemplo, aquí tienes un pseudocódigo para calcular la suma de dos números:
 
-If you have existing content authored in MDX, this integration will hopefully make migrating to Astro a breeze.
+## Álgebra Lineal en Redes Neuronales Recurrentes (RNN)
 
-## Example
+Las RNN utilizan álgebra lineal para procesar secuencias de datos. Por ejemplo, el estado oculto \( h_t \) en una RNN se calcula como:
 
-Here is how you import and use a UI component inside of MDX.  
-When you open this page in the browser, you should see the clickable button below.
 
-import HeaderLink from '../../components/HeaderLink.astro';
 
-<HeaderLink href="#" onclick="alert('clicked!')">
-	Embedded component in MDX
-</HeaderLink>
+Donde:
+- \( W_h \): Matriz de pesos para el estado oculto.
+- \( W_x \): Matriz de pesos para la entrada.
+- \( b \): Vector de sesgo.
+- \( tanh \): Función de activación tangente hiperbólica.
 
-## More Links
+### Implementación en Python
 
-- [MDX Syntax Documentation](https://mdxjs.com/docs/what-is-mdx)
-- [Astro Usage Documentation](https://docs.astro.build/en/guides/markdown-content/#markdown-and-mdx-pages)
-- **Note:** [Client Directives](https://docs.astro.build/en/reference/directives-reference/#client-directives) are still required to create interactive components. Otherwise, all components in your MDX will render as static HTML (no JavaScript) by default.
+A continuación, un ejemplo de cómo calcular el estado oculto en una RNN:
