@@ -1,80 +1,253 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getPage } from "../lib/wp";
+const [data] = await getPage("pagina-inicio");
+const {
+  title: { rendered: title },
+  content: { rendered: content },
+} = data;
+console.log(title, content);
 ---
 
 <!doctype html>
 <html lang="en">
-	<head >
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<section class="bg-white lg:grid lg:h-screen lg:place-content-center">
-			<div class="mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-			  <div class="mx-auto max-w-prose text-center">
-				<h1 class="text-4xl font-bold text-gray-900 sm:text-5xl">
-				Un lugar donde puedes
-				  <strong class="text-indigo-600"> aprender </strong>
-				  sin limites
-				</h1>
-		  
-				<p class="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed">
-				  Enfocamos en la enseñanza de las mejores prácticas de desarrollo web, desde el diseño hasta la implementación.
-				</p>
-		  
-				<div class="mt-4 flex justify-center gap-4 sm:mt-6">
-				  <a
-					class="inline-block rounded border border-indigo-600 bg-indigo-600 px-5 py-3 font-medium !text-white shadow-sm  "
-					href="#"
-				  >
-					Empezar
-				  </a>
-		  
-				  <a
-					class="inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900 "
-					href="#"
-				  >
-					Saber más
-				  </a>
-				</div>
-			  </div>
-			</div>
-		  </section>
-		<main>
-			<h1>🧑‍🚀 Hola, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <div class="bg-gray-50 min-h-screen">
+      <div
+        class="container mx-auto px-1 lg:px-2 py-6 grid grid-cols-1 lg:grid-cols-8 gap-2"
+      >
+        <!-- Sidebar -->
+        <aside
+          class="lg:col-span-2 bg-white shadow-md rounded-lg p-4 space-y-6"
+        >
+          <div class="relative">
+            <form class="max-w-md mx-auto">
+              <label
+                for="default-search"
+                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                >Search</label
+              >
+              <div class="relative">
+                <div
+                  class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+                >
+                  <svg
+                    class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+                  </svg>
+                </div>
+                <input
+                  type="search"
+                  id="default-search"
+                  class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Buscar..."
+                  required
+                />
+                <button
+                  type="submit"
+                  class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >Buscar</button
+                >
+              </div>
+            </form>
+          </div>
+          <span class="text-xxl font-semibold text-gray-800 mt-8 mb-4"
+            >📂 Categorías</span
+          >
+          <ul class="space-y-4 my-4">
+            <li>
+              <a
+                href="#"
+                class="block rounded-lg bg-indigo-100 px-4 py-2 text-indigo-700 font-medium shadow hover:bg-indigo-200 hover:text-indigo-800 transition"
+              >
+                💻 Desarrollo Web
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block rounded-lg bg-indigo-100 px-4 py-2 text-indigo-700 font-medium shadow hover:bg-indigo-200 hover:text-indigo-800 transition"
+              >
+                🎨 Diseño UI/UX
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block rounded-lg bg-indigo-100 px-4 py-2 text-indigo-700 font-medium shadow hover:bg-indigo-200 hover:text-indigo-800 transition"
+              >
+                👨‍💻 Programación
+              </a>
+            </li>
+          </ul>
+          <span class="text-xxl font-semibold text-gray-800 mt-8 mb-4"
+            >⚙️ Perfil</span
+          >
+          <div class="space-y-4 my-4">
+            <a
+              href="#"
+              class="block rounded-lg bg-gray-100 px-4 py-2 text-gray-700 font-medium shadow hover:bg-gray-200 hover:text-gray-800 transition"
+            >
+              👤 Mi Perfil
+            </a>
+            <a
+              href="#"
+              class="block rounded-lg bg-gray-100 px-4 py-2 text-gray-700 font-medium shadow hover:bg-gray-200 hover:text-gray-800 transition"
+            >
+              🔒 Cambiar Contraseña
+            </a>
+            <a
+              href="#"
+              class="block rounded-lg bg-gray-100 px-4 py-2 text-gray-700 font-medium shadow hover:bg-gray-200 hover:text-gray-800 transition"
+            >
+              🚪 Cerrar Sesión
+            </a>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="lg:col-span-6">
+          <section class="bg-white shadow-md rounded-lg p-8 mb-12">
+            <div class="text-center">
+              <h1 class="text-5xl font-bold text-gray-900 sm:text-6xl">
+                Un lugar donde puedes
+                <strong class="text-indigo-600"> aprender </strong>
+                sin limites 🚀
+              </h1>
+              <p class="mt-6 text-lg text-gray-700 sm:text-xl">
+                Enfocamos en la enseñanza de las mejores prácticas de desarrollo
+                web, desde el diseño hasta la implementación.
+              </p>
+              <div class="mt-8 flex justify-center gap-6">
+                <a
+                  class="inline-block rounded bg-indigo-600 px-6 py-3 text-white font-medium shadow-sm hover:bg-indigo-700"
+                  href="/about"
+                >
+                  ✨ Empezar
+                </a>
+                <a
+                  class="inline-block rounded border border-gray-300 px-6 py-3 text-gray-700 font-medium shadow-sm hover:bg-gray-100"
+                  href="/about"
+                >
+                  📖 Saber más
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section class="bg-white shadow-md rounded-lg p-4 mb-12">
+            <span class="text-xxl font-semibold text-gray-800 mb-6"
+              >🌟 Justificación e Impacto del Proyecto</span
+            >
+            <p class="text-lg text-gray-700 mb-4">
+              La creación de un sistema web colaborativo se justifica por la
+              necesidad de superar la fragmentación actual de proyectos
+              académicos en la BUAP y potenciar su impacto social. En un
+              contexto global donde las universidades desempeñan un papel
+              fundamental para alcanzar los Objetivos de Desarrollo Sostenible
+              (ODS), es indispensable contar con herramientas que integren el
+              conocimiento y fomenten la acción colectiva.
+            </p>
+            <p class="text-lg text-gray-700 mb-4">
+              Este sistema responde a esa demanda, ya que no solo aborda las
+              limitaciones actuales, sino que también establece un marco para la
+              innovación y la colaboración efectiva mediante:
+            </p>
+            <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+              <li>
+                <strong>Optimización de recursos:</strong> El sistema centralizará
+                los proyectos académicos, evitando la duplicidad de esfuerzos y maximizando
+                el uso de recursos humanos, financieros y tecnológicos.
+              </li>
+              <li>
+                <strong>Fomento de sinergias multidisciplinarias:</strong> Facilitará
+                la integración de áreas como ingeniería, ciencias sociales, biotecnología
+                y humanidades, creando un entorno propicio para abordar problemas
+                complejos desde perspectivas diversas.
+              </li>
+              <li>
+                <strong>Generar métricas claras:</strong> Incorporará herramientas
+                para cuantificar el impacto de los proyectos en los ODS, mediante
+                indicadores como el número de colaboraciones establecidas, beneficiarios
+                directos e indirectos, publicaciones derivadas y alianzas estratégicas.
+              </li>
+              <li>
+                <strong>Impacto académico:</strong> Aumentará el número de proyectos
+                interdisciplinarios registrados y facilitará la participación activa
+                de estudiantes, docentes e investigadores.
+              </li>
+              <li>
+                <strong>Impacto social:</strong> Vinculará proyectos con actores
+                externos (empresas, ONGs) para su implementación práctica.
+              </li>
+              <li>
+                <strong>Impacto institucional:</strong> Posicionará a la BUAP como
+                referente nacional en innovación educativa, fortaleciendo su reputación
+                y su papel como agente de cambio en la sociedad.
+              </li>
+            </ul>
+          </section>
+
+          <section class="bg-white shadow-md rounded-lg p-8">
+            <span class="text-xxl font-semibold text-gray-800 mb-6"
+              >🔥 Blogs más vistos</span
+            >
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition"
+              >
+                <h3 class="text-lg font-semibold text-gray-800">Blog 1</h3>
+                <p class="text-base text-gray-600 mt-2">
+                  Descripción breve del blog.
+                </p>
+                <a href="#" class="text-indigo-600 hover:underline mt-4 block"
+                  >Leer más ➡️</a
+                >
+              </div>
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition"
+              >
+                <h3 class="text-lg font-semibold text-gray-800">Blog 2</h3>
+                <p class="text-base text-gray-600 mt-2">
+                  Descripción breve del blog.
+                </p>
+                <a href="#" class="text-indigo-600 hover:underline mt-4 block"
+                  >Leer más ➡️</a
+                >
+              </div>
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition"
+              >
+                <h3 class="text-lg font-semibold text-gray-800">Blog 3</h3>
+                <p class="text-base text-gray-600 mt-2">
+                  Descripción breve del blog.
+                </p>
+                <a href="#" class="text-indigo-600 hover:underline mt-4 block"
+                  >Leer más ➡️</a
+                >
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <Footer />
+  </body>
 </html>
