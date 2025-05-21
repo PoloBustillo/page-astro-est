@@ -2,7 +2,7 @@
 title: "Guía de Estilo para Redes Neuronales"
 description: "Aquí tienes un ejemplo de sintaxis básica de Markdown que se puede usar al escribir contenido sobre redes neuronales en Astro."
 pubDate: "Jun 19 2024"
-heroImage: "/neural-networks-placeholder.jpg"
+heroImage: "/public/blog-placeholder-about.jpg"
 ---
 
 Aquí tienes un ejemplo de sintaxis básica de Markdown que se puede usar al escribir contenido sobre redes neuronales en Astro.
